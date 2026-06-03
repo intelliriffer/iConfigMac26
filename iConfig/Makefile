@@ -3957,13 +3957,13 @@ AudioPatchbayForm.o: AudioRelated/AudioPatchbayForm.cpp AudioRelated/AudioPatchb
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QComboBox \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
 		ui_AudioPatchbayForm.h \
+		../GeneSysLib/Audio/AudioV1/AudioCfgInfo.h \
+		../GeneSysLib/Audio/BitDepthCode.h \
+		../GeneSysLib/Audio/SampleRateCode.h \
 		../GeneSysLib/Audio/AudioV1/AudioInfo.h \
 		../GeneSysLib/Audio/AudioV1/AudioPortCfgInfo.h \
 		../GeneSysLib/Audio/AudioV1/AudioPortInfo.h \
 		../GeneSysLib/Audio/PortSpecificOptionsBit.h \
-		../GeneSysLib/Audio/AudioV1/AudioCfgInfo.h \
-		../GeneSysLib/Audio/BitDepthCode.h \
-		../GeneSysLib/Audio/SampleRateCode.h \
 		TreeUtils.h \
 		MyCheckBox.h \
 		GetSetFunc.h \
@@ -4964,49 +4964,11 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
 		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		ui_MainWindow.h \
-		AudioRelated/AudioInfoForm.h \
-		../GeneSysLib/Audio/AudioV1/AudioInfo.h \
-		../GeneSysLib/Audio/AudioV1/AudioCfgInfo.h \
-		../GeneSysLib/Audio/BitDepthCode.h \
-		../GeneSysLib/Audio/SampleRateCode.h \
-		../GeneSysLib/Audio/AudioV1/AudioClockInfo.h \
-		../GeneSysLib/Audio/AudioV1/ClockSourceType.h \
-		../GeneSysLib/Audio/AudioV1/AudioPortCfgInfo.h \
-		../GeneSysLib/Audio/AudioV1/AudioPortInfo.h \
-		../GeneSysLib/Audio/PortSpecificOptionsBit.h \
-		../GeneSysLib/Audio/AudioV2/AudioGlobalParm.h \
-		../GeneSysLib/Audio/AudioV2/AudioPortParm.h \
-		../GeneSysLib/Audio/AudioV2/AudioPortParmTypes.h \
-		../GeneSysLib/Audio/AudioV2/AudioDeviceParm.h \
-		../GeneSysLib/Audio/AudioV2/AudioDeviceTypes.h \
-		../GeneSysLib/Audio/AudioV2/AudioControlParm.h \
-		../GeneSysLib/Audio/AudioV2/ControllerType.h \
-		../GeneSysLib/Audio/AudioV2/AudioControlTypes.h \
-		../GeneSysLib/Audio/AudioV2/AudioControlDetail.h \
-		../GeneSysLib/Audio/AudioV2/AudioControlDetailTypes.h \
-		../GeneSysLib/Audio/AudioV2/AudioClockParm.h \
-		../GeneSysLib/Audio/AudioV2/AudioPatchbayParm.h \
-		../GeneSysLib/Base/blockNotFound.h \
-		../GeneSysLib/Audio/AudioV1/AudioPortPatchbay.h \
-		../GeneSysLib/Audio/Mixer/MixerParm.h \
-		../GeneSysLib/Audio/Mixer/MixerPortParm.h \
-		GetSetFunc.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QStringList \
-		refreshobject.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-		MixerRelated/MixerInterface.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QTreeWidgetItem \
-		AudioRelated/AudioPatchbayForm.h \
-		RefreshObject.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QComboBox \
-		AudioRelated/PatchbayV2Form.h \
-		AudioRelated/IAudioPatchbaySource.h \
-		AudioRelated/AudioPatchbaySourceV1.h \
-		AudioRelated/AudioPatchbaySourceV2.h \
 		AudioRelated/AudioControlWidget.h \
 		AudioRelated/AudioChannelsControlWidget.h \
 		AudioRelated/AudioFeatureControlWidget.h \
 		AudioRelated/IAudioControlFeatureSource.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QLabel \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSlider \
@@ -5022,14 +4984,52 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		MixerRelated/MixerWidget.h \
 		MixerRelated/MixerPortWidget.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QGroupBox \
+		MixerRelated/MixerInterface.h \
 		MixerRelated/MixerInputInterface.h \
 		MixerRelated/MixerOutputInterface.h \
 		MixerRelated/MixerChannelWidget.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QComboBox \
 		QClickySlider.h \
+		refreshobject.h \
 		MixerRelated/HorizontalMeterWidget.h \
+		../GeneSysLib/Audio/AudioV2/AudioGlobalParm.h \
+		../GeneSysLib/Audio/BitDepthCode.h \
+		../GeneSysLib/Audio/SampleRateCode.h \
+		../GeneSysLib/Audio/AudioV2/AudioPortParm.h \
+		../GeneSysLib/Audio/AudioV2/AudioPortParmTypes.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QScrollArea \
 		AudioRelated/AudioControlFeatureSource.h \
+		AudioRelated/AudioInfoForm.h \
+		../GeneSysLib/Audio/AudioV1/AudioInfo.h \
+		../GeneSysLib/Audio/AudioV1/AudioCfgInfo.h \
+		../GeneSysLib/Audio/AudioV1/AudioClockInfo.h \
+		../GeneSysLib/Audio/AudioV1/ClockSourceType.h \
+		../GeneSysLib/Audio/AudioV1/AudioPortCfgInfo.h \
+		../GeneSysLib/Audio/AudioV1/AudioPortInfo.h \
+		../GeneSysLib/Audio/PortSpecificOptionsBit.h \
+		../GeneSysLib/Audio/AudioV2/AudioDeviceParm.h \
+		../GeneSysLib/Audio/AudioV2/AudioDeviceTypes.h \
+		../GeneSysLib/Audio/AudioV2/AudioControlParm.h \
+		../GeneSysLib/Audio/AudioV2/ControllerType.h \
+		../GeneSysLib/Audio/AudioV2/AudioControlTypes.h \
+		../GeneSysLib/Audio/AudioV2/AudioControlDetail.h \
+		../GeneSysLib/Audio/AudioV2/AudioControlDetailTypes.h \
+		../GeneSysLib/Audio/AudioV2/AudioClockParm.h \
+		../GeneSysLib/Audio/AudioV2/AudioPatchbayParm.h \
+		../GeneSysLib/Base/blockNotFound.h \
+		../GeneSysLib/Audio/AudioV1/AudioPortPatchbay.h \
+		../GeneSysLib/Audio/Mixer/MixerParm.h \
+		../GeneSysLib/Audio/Mixer/MixerPortParm.h \
+		GetSetFunc.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QStringList \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QTreeWidgetItem \
+		AudioRelated/AudioPatchbayForm.h \
+		RefreshObject.h \
+		AudioRelated/AudioPatchbaySourceV1.h \
+		AudioRelated/IAudioPatchbaySource.h \
+		AudioRelated/AudioPatchbaySourceV2.h \
+		AudioRelated/PatchbayV2Form.h \
 		FirmwareRelated/FirmwareUpgradeDialog.h \
 		DeviceRebooter.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QMap \
@@ -5058,20 +5058,20 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		../GeneSysLib/Device/Device.h \
 		../GeneSysLib/Device/DevicePID.h \
 		DeviceSelectionDialog.h \
-		../GeneSysLib/Device/Reset.h \
-		../GeneSysLib/Device/ResetList.h \
-		../GeneSysLib/Device/SaveRestore.h \
+		FirmwareRelated/FirmwareCheckDialog.h \
 		Presets/ICRestoreDialog.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QStandardItemModel \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QListView \
 		Presets/ICSaveDialog.h \
-		FirmwareRelated/FirmwareCheckDialog.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QPointer \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
-		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
-		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths \
+		../GeneSysLib/Device/Reset.h \
+		../GeneSysLib/Device/ResetList.h \
+		../GeneSysLib/Device/SaveRestore.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDateTime \
-		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
+		/opt/homebrew/lib/QtCore.framework/Headers/QPointer \
+		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o MainWindow.cpp
 
 MySleep.o: MySleep.cpp MySleep.h \
@@ -5210,11 +5210,10 @@ PatchbayV2Form.o: AudioRelated/PatchbayV2Form.cpp AudioRelated/PatchbayV2Form.h 
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
-		ui_patchbayV2Form.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPaintEvent \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainter \
-		/opt/homebrew/lib/QtGui.framework/Headers/QPainterPath \
-		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
+		/opt/homebrew/lib/QtGui.framework/Headers/QPainterPath
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o PatchbayV2Form.o AudioRelated/PatchbayV2Form.cpp
 
 AudioPatchbaySourceV2.o: AudioRelated/AudioPatchbaySourceV2.cpp ../GeneSysLib/Base/CommandDefines.h \
