@@ -128,7 +128,7 @@ MainWindow::MainWindow(QWidget* parent)
         connect(comm->timerThread.get(), SIGNAL(timedOut()), this,
             SLOT(onTimeout()));
     }
-    ui->toolBar->setStyleSheet("QToolBar { border: 0px; background: #404040; color: #979797; margin: 0px; padding: 4px; spacing: 0px;} QToolButton {font-size:14pt; height: 32px; width: 128px; border: 1px solid black; border-left:0; color: #ffffff; } QToolButton:checked { color: #404040; background-color: #35b6ea; } QToolButton:hover { color: #404040; background-color: #9462b3; } QToolButton:pressed { color: #404040; background-color: #35b6ea; }");
+    ui->toolBar->setStyleSheet("QToolBar { border: 0px; background: #404040; color: #979797; margin: 0px; padding: 4px; spacing: 0px;} QToolButton {font-weight:bold; font-size:13pt; height: 32px; width: 150px; border: 1px solid black; border-left:0; color: #ffffff; } QToolButton:checked { color: #404040; background-color: #35b6ea; } QToolButton:hover { color: #404040; background-color: #9462b3; } QToolButton:pressed { color: #404040; background-color: #35b6ea; }");
     //  ui->toolBar->setMinimumHeight(50);
     ui->toolBar->layout()->setContentsMargins(0, 0, 0, 0);
     ui->toolBar->show();

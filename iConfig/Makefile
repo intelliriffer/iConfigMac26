@@ -5210,6 +5210,7 @@ PatchbayV2Form.o: AudioRelated/PatchbayV2Form.cpp AudioRelated/PatchbayV2Form.h 
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ui_patchbayV2Form.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPaintEvent \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainter \
@@ -6436,7 +6437,6 @@ ICSaveDialog.o: Presets/ICSaveDialog.cpp Presets/ICSaveDialog.h \
 		../GeneSysLib/MIDI/RemapID.h \
 		Screen.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QMutex \
-		ui_ICSaveDialog.h \
 		MainWindow.h \
 		../GeneSysLib/Base/CommandList.h \
 		../GeneSysLib/Device/SaveRestoreList.h \
@@ -6457,11 +6457,12 @@ ICSaveDialog.o: Presets/ICSaveDialog.cpp Presets/ICSaveDialog.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
 		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		../GeneSysLib/Device/SaveRestore.h \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
+		ui_ICSaveDialog.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
-		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtCore.framework/Headers/QRegularExpression \
 		/opt/homebrew/lib/QtGui.framework/Headers/QRegularExpressionValidator \
+		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths \
 		../GeneSysLib/Device/Device.h \
 		../GeneSysLib/Device/DevicePID.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
@@ -6515,7 +6516,6 @@ ICRestoreDialog.o: Presets/ICRestoreDialog.cpp Presets/ICRestoreDialog.h \
 		../GeneSysLib/MIDI/RemapID.h \
 		Screen.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QMutex \
-		ui_ICRestoreDialog.h \
 		MainWindow.h \
 		../GeneSysLib/Base/CommandList.h \
 		../GeneSysLib/Device/SaveRestoreList.h \
@@ -6535,10 +6535,11 @@ ICRestoreDialog.o: Presets/ICRestoreDialog.cpp Presets/ICRestoreDialog.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
 		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
-		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
+		ui_ICRestoreDialog.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
 		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
-		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths \
-		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
+		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ICRestoreDialog.o Presets/ICRestoreDialog.cpp
 
 FirmwareCheckDialog.o: FirmwareRelated/FirmwareCheckDialog.cpp FirmwareRelated/FirmwareCheckDialog.h \
