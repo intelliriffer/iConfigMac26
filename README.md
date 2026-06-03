@@ -32,3 +32,8 @@ Original Iconfig is ver old (2017) and on Silicon Macs runs under Rosetta. Apple
 ### Pre-Built App
 
 You can download the latest build from the releases section if you dont want to build yourself. Please note you will have to Allow this app to run under System Settings > Privacy and Security by clicking **Open Anway**, after your mac prompts you that it cannot be opened.
+
+### Other Docs
+ 
+1. [BUILD-README](BUILD-README.md)
+2. [LICENSE](LICENSE.md)

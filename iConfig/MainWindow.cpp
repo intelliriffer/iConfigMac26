@@ -640,7 +640,7 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionOpenPresetsFolder_triggered()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/presets"));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/iConfigMac26/presets"));
 }
 
 void MainWindow::clearLayout(QLayout* layout)
