@@ -22,21 +22,20 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_DeviceInfoForm
-{
+class Ui_DeviceInfoForm {
 public:
-    QGridLayout *gridLayout;
-    QSplitter *splitter;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout;
-    QLabel *accessoryLabel;
-    QLabel *deviceNameLabel;
-    QLabel *pictureLabel;
-    QSpacerItem *verticalSpacer_2;
-    QLabel *urlLabel;
-    QTreeWidget *treeWidget;
+    QGridLayout* gridLayout;
+    QSplitter* splitter;
+    QWidget* widget;
+    QVBoxLayout* verticalLayout;
+    QLabel* accessoryLabel;
+    QLabel* deviceNameLabel;
+    QLabel* pictureLabel;
+    QSpacerItem* verticalSpacer_2;
+    QLabel* urlLabel;
+    QTreeWidget* treeWidget;
 
-    void setupUi(QWidget *DeviceInfoForm)
+    void setupUi(QWidget* DeviceInfoForm)
     {
         if (DeviceInfoForm->objectName().isEmpty())
             DeviceInfoForm->setObjectName("DeviceInfoForm");
@@ -107,9 +106,19 @@ public:
 
         splitter->addWidget(widget);
         treeWidget = new QTreeWidget(splitter);
-        QTreeWidgetItem *__qtreewidgetitem = new QTreeWidgetItem();
+        treeWidget->setStyleSheet("QTreeWidget { font-size: 14pt; }");
+
+        QTreeWidgetItem* __qtreewidgetitem = new QTreeWidgetItem();
+        QFont fontH = __qtreewidgetitem->font(0);
+        QFont fontV = __qtreewidgetitem->font(1);
+        fontH.setPointSize(14);
+        fontH.setBold(true);
+        fontV.setPointSize(16);
+        __qtreewidgetitem->setFont(0, fontH);
+        __qtreewidgetitem->setFont(1, fontH);
         __qtreewidgetitem->setText(1, QString::fromUtf8("Value"));
         __qtreewidgetitem->setText(0, QString::fromUtf8("Information"));
+
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName("treeWidget");
         treeWidget->setFrameShape(QFrame::StyledPanel);
@@ -130,13 +139,12 @@ public:
 
         gridLayout->addWidget(splitter, 0, 0, 1, 1);
 
-
         retranslateUi(DeviceInfoForm);
 
         QMetaObject::connectSlotsByName(DeviceInfoForm);
     } // setupUi
 
-    void retranslateUi(QWidget *DeviceInfoForm)
+    void retranslateUi(QWidget* DeviceInfoForm)
     {
         DeviceInfoForm->setWindowTitle(QCoreApplication::translate("DeviceInfoForm", "Device Information", nullptr));
         accessoryLabel->setText(QString());
@@ -144,11 +152,10 @@ public:
         pictureLabel->setText(QString());
         urlLabel->setText(QCoreApplication::translate("DeviceInfoForm", "<html><head/><body><p>Visit <a href=\"http://www.iconnectivity.com\"><span style=\" text-decoration: underline; color:#0000ff;\">iConnectivity</span></a> for product information.</p></body></html>", nullptr));
     } // retranslateUi
-
 };
 
 namespace Ui {
-    class DeviceInfoForm: public Ui_DeviceInfoForm {};
+class DeviceInfoForm : public Ui_DeviceInfoForm { };
 } // namespace Ui
 
 QT_END_NAMESPACE
