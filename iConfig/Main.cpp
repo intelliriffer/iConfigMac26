@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 
     QCoreApplication::setOrganizationName("iConnectivity/OS");
     QCoreApplication::setOrganizationDomain("iConnectivity.com");
-    QCoreApplication::setApplicationName("iConfigMac2026");
+    QCoreApplication::setApplicationName("iConfigMac26");
     // QCoreApplication::setApplicationVersion("4.1.3");
     // QCoreApplication::setApplicationVersion("4.2.0");
     // bugfxing: version change to "4.2.1"
@@ -41,7 +41,6 @@ int main(int argc, char* argv[])
     // QCoreApplication::setApplicationVersion("4.2.6"); //zx, 2017-06-22
     QCoreApplication::setApplicationVersion("4.2.7"); // fix, 2017-11-15
     QCoreApplication::setApplicationVersion("4.3.0"); // 03-06-2026
-
     MainWindow w;
     w.show();
 

@@ -85,6 +85,7 @@ MainWindow::MainWindow(QWidget* parent)
     , connected(false)
 {
     ui->setupUi(this);
+    this->setWindowTitle("iConfigMac26");
     // Re-factory device selection UI functions, zx, 2017-04-06
     m_FirstSelectedDevice = false;
     continuedOpeningFileName = "";
