@@ -8,16 +8,13 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15
 
 TARGET = "iConnectivity iConfig"
 TEMPLATE = app
 include(./qtsinglapplication/qtsingleapplication.pri)
 
 
-#mac: LIBS += -F -isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/ -framework CoreMIDI
-#mac: LIBS += -F -isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/ -framework CoreFoundation
-#mac: LIBS += -F -isystem/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/ -framework CoreAudio
 
 #mac: LIBS += -F -isystem/Library/Frameworks/ -framework CoreMIDI
 #mac: LIBS += -F -isystem/Library/Frameworks/ -framework CoreFoundation
@@ -184,9 +181,8 @@ win32: LIBS         += -L"C:/Program Files (x86)/Microsoft SDKs/Windows/v7.1A/Li
 
 
 
-mac: QMAKE_CXXFLAGS = -std=c++11 -stdlib=libstdc++ -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.6
-mac: QMAKE_LFLAGS = -std=c++11 -stdlib=libstdc++ -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.6
-mac: QMAKE_CXXFLAGS += -isystem /opt/local/include
+mac: QMAKE_CXXFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15
+mac: QMAKE_LFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15
 
 mac: LIBS           += -framework CoreMIDI
 mac: LIBS           += -framework CoreFoundation
@@ -241,11 +237,8 @@ OTHER_FILES +=                                                  \
 win32: INCLUDEPATH  += C:/boost_1_57_0/
 win32: DEPENDPATH   += C:/boost_1_57_0/
 
-mac: INCLUDEPATH += /opt/local/include/
-mac: DEPENDPATH += /opt/local/include/
-mac: INCLUDEPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/
-mac: INCLUDEPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1/
-mac: DEPENDPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/
+
+
 
 ICON = ./Icon.icns
 win32: RC_FILE += iconResource.rc
@@ -254,18 +247,19 @@ win32: LIBS += -LC:/boost_1_57_0/lib32-msvc-12.0/
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Release/release/ -lGeneSysLib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Debug/debug/ -lGeneSysLib
-else:macx: LIBS += -L$$PWD/../Software/GeneSysLib/build-GeneSysLib-Default-Release/ -lGeneSysLib
+else:macx: LIBS += -L$$PWD/../GeneSysLib/Qt -lGeneSysLib
 
 INCLUDEPATH += $$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Release
 DEPENDPATH += $$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Release
-mac:INCLUDEPATH += $$PWD/../Software/GeneSysLib/build-GeneSysLib-Desktop-Release
-mac:DEPENDPATH += $$PWD/../Software/GeneSysLib/build-GeneSysLib-Desktop-Release
+mac:INCLUDEPATH += $$PWD/../GeneSysLib/Qt
+mac:DEPENDPATH += $$PWD/../GeneSysLib/Qt
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../GeneSysLib/build-GeneSysLib-Default-Release/libGeneSysLib.a
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../GeneSysLib/build-GeneSysLib-Default-Debug/libGeneSysLib.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Release/release/GeneSysLib.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../GeneSysLib/build-GeneSysLib-Desktop-Debug/debug/GeneSysLib.lib
-else:macx: PRE_TARGETDEPS += $$PWD/../Software/GeneSysLib/build-GeneSysLib-Default-Release/libGeneSysLib.a
+else:macx: PRE_TARGETDEPS += $$PWD/..
 
 DISTFILES += \
     Images/block_pa12device.png
 
+mac: INCLUDEPATH += /opt/homebrew/include/

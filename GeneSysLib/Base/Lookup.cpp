@@ -9,11 +9,12 @@
 #include "Lookup.h"
 
 #ifndef Q_MOC_RUN
-#include <boost/tr1/unordered_map.hpp>
+#include <unordered_map>
+namespace boost { namespace tr1 { using std::unordered_map; }}
 #include <boost/range.hpp>
 #endif
 
-using std::tr1::unordered_map;
+using boost::tr1::unordered_map;
 using namespace boost;
 
 namespace GeneSysLib {

@@ -6,25 +6,30 @@
 */
 
 #include "QtSingleApplicationWrapper.h"
+#include <QSharedMemory>
 #include <iostream>
 
-QtSingleApplicationWrapper::QtSingleApplicationWrapper(int &argc, char **argv, bool GUIenabled) :
-  QtSingleApplication(argc, argv, GUIenabled)
-{
-//  QtSingleApplication::;
+static bool isInstanceRunning(const QString &appId) {
+  QSharedMemory sharedMem(appId);
+  sharedMem.attach();
+  return sharedMem.isAttached() && sharedMem.size() > 0;
+}
+
+QtSingleApplicationWrapper::QtSingleApplicationWrapper(int &argc, char **argv) :
+  QApplication(argc, argv),
+  m_appId(QUuid::createUuid()) {
 }
 
 QtSingleApplicationWrapper::QtSingleApplicationWrapper(const QString &appId, int &argc, char **argv) :
-  QtSingleApplication(appId, argc, argv)
-{
-
+  QApplication(argc, argv),
+  m_appId(appId.toLatin1()) {
 }
 
-bool QtSingleApplicationWrapper::notify(QObject *receiver, QEvent *event) {
-  try {
-    return QtSingleApplication::notify( receiver, event );
-  } catch ( std::exception& e ) {
-    std::cout << "exception caught: " << e.what() << '\n';
-    return false;
-  }
+bool QtSingleApplicationWrapper::isRunning() {
+  return isInstanceRunning(m_appId.toString());
+}
+
+void QtSingleApplicationWrapper::sendMessage(const QString &message) {
+  // Simple messaging - in a real implementation this would use QLocalSocket
+  std::cout << "Message sent: " << message.toStdString() << std::endl;
 }

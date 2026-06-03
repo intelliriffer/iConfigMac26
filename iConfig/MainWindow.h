@@ -16,6 +16,7 @@
 
 #include <QMainWindow>
 #include <QAction>
+#include <QActionGroup>
 #include <QMdiSubWindow>
 #include <QCloseEvent>
 #include <QProgressDialog>

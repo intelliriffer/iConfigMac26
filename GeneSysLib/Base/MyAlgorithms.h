@@ -10,8 +10,12 @@
 
 #include "LibTypes.h"
 #include <map>
+#include <list>
+#include <vector>
 #ifndef Q_MOC_RUN
-#include <boost/tr1/unordered_map.hpp>
+// Use std::unordered_map for modern systems (TR1 deprecated in newer Boost)
+#include <unordered_map>
+namespace boost { namespace tr1 { using std::unordered_map; } }
 #endif
 
 namespace MyAlgorithms {
@@ -40,7 +44,7 @@ bool contains(const std::map<Key, T>& map, const Key& key) {
 }
 
 template <class Key, class T>
-bool contains(const std::tr1::unordered_map<Key, T>& map, const Key& key) {
+bool contains(const boost::tr1::unordered_map<Key, T>& map, const Key& key) {
   return map.find(key) != map.end();
 }
 

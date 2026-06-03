@@ -109,7 +109,7 @@ inline std::string nextMidiString(Byte length, BytesIter &beginIter,
   string result;
   if (distance(beginIter, endIter) >= length) {
     result = string(beginIter, (beginIter + length));
-    advance(beginIter, length);
+    std::advance(beginIter, length);
   }
   return result;
 }

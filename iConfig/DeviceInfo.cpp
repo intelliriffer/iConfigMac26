@@ -165,11 +165,18 @@ bool DeviceInfo::startQuery(Screen screen, const CommandQList& query) {
 
     // Queries before
     if (currentQuery.empty()) {
-      currentQuery = query.toStdList();
+      currentQuery.clear();
+      for (auto cmd : query) {
+        currentQuery.push_back(cmd);
+      }
     }
     else {
       pendingQueriesMutex.lock();
-      pendingQueries.push(boost::make_tuple(screen, query.toStdList()));
+      auto tmpList = boost::shared_ptr<std::list<GeneSysLib::CmdEnum>>(new std::list<GeneSysLib::CmdEnum>);
+      for (auto cmd : query) {
+        tmpList->push_back(cmd);
+      }
+      pendingQueries.push(boost::tuple<Screen, boost::shared_ptr<std::list<GeneSysLib::CmdEnum>>>(screen, tmpList));
       pendingQueriesMutex.unlock();
       currentQueryMutex.unlock();
       return result;
@@ -184,7 +191,11 @@ bool DeviceInfo::startQuery(Screen screen, const CommandQList& query) {
   } else {
     currentQueryMutex.unlock();
     pendingQueriesMutex.lock();
-    pendingQueries.push(boost::make_tuple(screen, query.toStdList()));
+    auto tmpList = boost::shared_ptr<std::list<GeneSysLib::CmdEnum>>(new std::list<GeneSysLib::CmdEnum>);
+    for (auto cmd : query) {
+      tmpList->push_back(cmd);
+    }
+    pendingQueries.push(boost::tuple<Screen, boost::shared_ptr<std::list<GeneSysLib::CmdEnum>>>(screen, tmpList));
     pendingQueriesMutex.unlock();
   }
 
@@ -533,7 +544,7 @@ bool DeviceInfo::sendNextSysex() {
 
       // post the current query
       queriedItemsMutex.lock();
-      queriedItems = queriedItems.toSet().toList();
+      queriedItems = queriedItems.toList();
       queriedItemsMutex.unlock();
 
       if (queryScreen != UnknownScreen) {
@@ -559,7 +570,7 @@ bool DeviceInfo::sendNextSysex() {
 
         // set the currentQuery to the next query
         currentQueryMutex.lock();
-        currentQuery = boost::get<1>(nextQuery);
+        currentQuery = *boost::get<1>(nextQuery);
         currentQueryMutex.unlock();
 
         // clear the list of queried items
@@ -1213,7 +1224,7 @@ Bytes DeviceInfo::serialize2(std::set<Command::Enum> commandsToSave, QString des
   description = description.mid(0,239);
   result += (unsigned char) description.size();
   for (int x = 0; x < description.size(); x++) {
-    result += description.at(x).toAscii();
+    result += description.at(x).toLatin1();
   }
 
   for (const auto& cmdPair : storedCommandData) {

@@ -11,7 +11,8 @@
 #include "LibTypes.h"
 
 #include <QString>
-#include <QRegExp>
+// QRegExp was deprecated in Qt 5, use QRegularExpression instead
+#include <QRegularExpression>
 
 namespace NetAddrTools {
 
@@ -19,7 +20,7 @@ QString fromNetAddr(const NetAddr &netAddr);
 
 NetAddr toNetAddr(QString value);
 
-QRegExp ipRegEx();
+QRegularExpression ipRegEx();
 
 }  // namespace NetAddrTools
 

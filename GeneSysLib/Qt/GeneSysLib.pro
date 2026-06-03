@@ -13,25 +13,21 @@ CONFIG += staticlib
 CONFIG -= PRECOMPILED_HEADER
 
 DEFINES += BOOST_RESULT_OF_USE_DECLTYPE
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15
 
 #mac: DEFINES        += __MACOSX_CORE__
 win32: DEFINES      += __WINDOWS_MM__
 win32: LIBS         += -L"C:/Program Files (x86)/Microsoft SDKs/Windows/v7.1A/Lib/" -lWinMM
 
-mac: QMAKE_CXXFLAGS = -std=c++11 -stdlib=libstdc++ -Wno-unused-parameter -mmacosx-version-min=10.6
-mac: QMAKE_LFLAGS = -std=c++11 -stdlib=libstdc++ -Wno-unused-parameter -mmacosx-version-min=10.6
-mac: QMAKE_CXXFLAGS += -isystem /opt/local/include
+mac: QMAKE_CXXFLAGS = -std=c++11  -Wno-unused-parameter -mmacosx-version-min=10.15
+mac: QMAKE_LFLAGS = -std=c++11  -Wno-unused-parameter -mmacosx-version-min=10.15
 
 win32: INCLUDEPATH  += C:/boost_1_57_0/
 win32: DEPENDPATH   += C:/boost_1_57_0/
 
-mac: INCLUDEPATH += /opt/local/include/
-mac: DEPENDPATH += /opt/local/include/
 
-mac: INCLUDEPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/
-mac: INCLUDEPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/c++/4.2.1/
-mac: DEPENDPATH += -isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/usr/include/
+
+
 
 INCLUDEPATH += $$PWD/../../rtmidi-2.1.1
 DEPENDPATH += $$PWD/../../rtmidi-2.1.1
@@ -207,3 +203,4 @@ INCLUDEPATH += \
     ../Base \
     ../Device \
     ../MIDI
+mac: INCLUDEPATH += /opt/homebrew/include/

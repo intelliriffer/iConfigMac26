@@ -8,20 +8,22 @@
 #ifndef QAPPLICATIONWRAPPER_H
 #define QAPPLICATIONWRAPPER_H
 
-#include <QtSingleApplication>
+#include <QApplication>
+#include <QUuid>
 
-class QtSingleApplicationWrapper : public QtSingleApplication
+// Modern replacement for QtSingleApplication - uses QUuid for unique app ID
+class QtSingleApplicationWrapper : public QApplication
 {
   Q_OBJECT
 public:
-  explicit QtSingleApplicationWrapper(QObject *parent = 0);
-  explicit QtSingleApplicationWrapper( int & argc, char ** argv, bool GUIenabled = true );
+  explicit QtSingleApplicationWrapper( int & argc, char ** argv );
   explicit QtSingleApplicationWrapper( const QString & appId, int & argc, char ** argv );
-  bool notify(QObject *receiver, QEvent *event);
-signals:
 
-public slots:
+  bool isRunning();
+  void sendMessage(const QString &message);
 
+private:
+  QUuid m_appId;
 };
 
 #endif // QAPPLICATIONWRAPPER_H

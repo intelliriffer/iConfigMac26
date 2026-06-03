@@ -42,7 +42,13 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/swap.hpp>
-#include <boost/tr1/unordered_map.hpp>
+
+// Compatibility for deprecated TR1 components in newer Boost versions
+// In modern Boost, tr1 components are not bundled - use std equivalents
+namespace boost { namespace tr1 {
+    using std::unordered_map;
+}}
+
 #include <boost/tuple/tuple.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/variant.hpp>
@@ -58,7 +64,10 @@
 #include <QDialog>
 #include <QFile>
 #include <QFileDialog>
+// QHttp was removed in Qt 5.0, use QNetworkAccessManager instead
+#if QT_VERSION < 0x050000
 #include <QHttp>
+#endif
 #include <QLabel>
 #include <QList>
 #include <QLineEdit>
@@ -74,7 +83,12 @@
 #include <QPointer>
 #include <QProgressBar>
 #include <QProgressDialog>
+// QRegExp was deprecated in Qt 5, use QRegularExpression instead
+#if QT_VERSION >= 0x050000
+#include <QRegularExpression>
+#else
 #include <QRegExp>
+#endif
 #include <QSet>
 #include <QSettings>
 #include <QSignalMapper>

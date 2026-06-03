@@ -13,6 +13,9 @@
 
 #include <QFileDialog>
 #include <QDesktopServices>
+#include <QStandardPaths>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 #include <QMessageBox>
 //Disable Audio Patchbay related control for MDID devices, zx, 2017-04-12
 #include "Device.h"
@@ -42,7 +45,7 @@ ICSaveDialog::ICSaveDialog(DeviceInfoPtr device, QWidget *parent) :
   connect(ui->checkMidiInfo,SIGNAL(toggled(bool)), this, SLOT(checkToggled(bool)));
   connect(ui->checkMidiPortRouting,SIGNAL(toggled(bool)), this, SLOT(checkToggled(bool)));
 
-  ui->textEditFileName->setValidator(new QRegExpValidator(QRegExp("[A-Za-z0-9_][A-Za-z0-9_.- ]+"), this));
+  ui->textEditFileName->setValidator(new QRegularExpressionValidator);
   ui->textEditFileName->setFocus();
 
   //Disable Audio Patchbay related control for MDID devices, zx, 2017-04-11
@@ -321,9 +324,10 @@ void ICSaveDialog::buttonExportAsMidi_triggered() {
 }
 
 void ICSaveDialog::accept() {
-  QDir::root().mkpath(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/presets");
+  QString presetsPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/presets";
+  QDir::root().mkpath(presetsPath);
 
-  QString fileName = QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/presets/" +
+  QString fileName = presetsPath + "/" +
                      ui->textEditFileName->text() + MainWindow::extensionForPID(currentDevice->getPID());
 
   std::set<Command::Enum> preRebootCommands = getPreRebootCommands();
@@ -351,10 +355,10 @@ void ICSaveDialog::accept() {
 
     Bytes serialized;
     if (!preRebootCommands.empty()) {
-      serialized = currentDevice->serialize2(preRebootCommands, ui->textEditDescription->text().toAscii());
+      serialized = currentDevice->serialize2(preRebootCommands, ui->textEditDescription->text().toLatin1());
     }
     else {
-      serialized = currentDevice->serialize2(postRebootCommands, ui->textEditDescription->text().toAscii());
+      serialized = currentDevice->serialize2(postRebootCommands, ui->textEditDescription->text().toLatin1());
     }
     char* data = (char*)serialized.data();
     file.write(data, serialized.size());

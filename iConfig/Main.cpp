@@ -13,16 +13,15 @@
 int main(int argc, char *argv[]) {
 
 #ifdef Q_OS_MAC
-  if (QSysInfo::MacintoshVersion > QSysInfo::MV_10_8) {
-    // fix Mac OS X 10.9 (mavericks) font issue
-    // https://bugreports.qt-project.org/browse/QTBUG-32789
-    QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
-  }
+// Qt5+ removed MacintoshVersion enum - font substitution handled differently now
 #endif
 
   QtSingleApplicationWrapper instance("iConnectivity iConfig", argc, argv);
   QThread::currentThread()->setPriority(QThread::LowPriority);
-  if (instance.sendMessage("Application already running")) {
+
+  // Check if another instance is already running
+  if (instance.isRunning()) {
+    std::cout << "Another instance is already running." << std::endl;
     return 0;
   }
 
@@ -40,6 +39,7 @@ int main(int argc, char *argv[]) {
   //QCoreApplication::setApplicationVersion("4.2.5"); //zx, 2017-04-26
   //QCoreApplication::setApplicationVersion("4.2.6"); //zx, 2017-06-22
   QCoreApplication::setApplicationVersion("4.2.7"); //fix, 2017-11-15
+
   MainWindow w;
   w.show();
 

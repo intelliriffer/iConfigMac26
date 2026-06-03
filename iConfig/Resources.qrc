@@ -7,8 +7,7 @@
         <file>Images/block_ica4plusdevice.png</file>
         <file>Images/block_ica2plusdevice.png</file>
         <file>Images/block_mio2device.png</file>
-        <file>Images/block_amio26device.png</file>
-        <file>Images/block_amio46device.png</file>
+        <!-- Missing images: block_amio26device.png, block_amio46device.png -->
         <file>Images/block_mio4device.png</file>
         <file>Images/block_mio10device.png</file>
         <file>Images/block_ca24device.png</file>

@@ -289,7 +289,7 @@ signals:
   int maxWriteItems;
   std::list<GeneSysLib::CmdEnum> currentQuery;
   std::map<GeneSysLib::CmdEnum, long> registeredHandlerIDs;
-  std::queue<boost::tuple<Screen, std::list<GeneSysLib::CmdEnum> > >
+  std::queue<boost::tuple<Screen, boost::shared_ptr<std::list<GeneSysLib::CmdEnum> > > >
       pendingQueries;
   std::queue<Bytes> sysexMessages;
   std::set<GeneSysLib::CmdEnum> attemptedQueries;

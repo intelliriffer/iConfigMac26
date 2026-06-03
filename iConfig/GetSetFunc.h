@@ -12,11 +12,12 @@
 #include <boost/function.hpp>
 #endif
 
+// Forward declarations - removed QString/QStringList as they are typedefs in Qt6
 class QComboBox;
-class QString;
-class QStringList;
 
 #ifndef Q_MOC_RUN
+#include <QString>
+#include <QStringList>
 typedef boost::function<bool(void)> GetBoolFunctor;
 typedef boost::function<void(bool)> SetBoolFunctor;
 

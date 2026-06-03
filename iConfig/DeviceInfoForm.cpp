@@ -16,11 +16,12 @@
 #include "MyAlgorithms.h"
 #include "MyConverters.h"
 #include "MyLineEdit.h"
+#include <QRegularExpressionValidator>
 #include "MyLineEdit.h"
 #include "TreeUtils.h"
 
 #include <QHostAddress>
-#include <QRegExp>
+#include <QRegularExpression>
 
 #ifndef Q_MOC_RUN
 #include <boost/bind.hpp>
@@ -303,7 +304,7 @@ void DeviceInfoForm::addNetAddrLineEdit(QTreeWidgetItem* treeItem,
                                         const SetQStringFunctor& setFunc) {
   auto* lineEdit =
       addLineEditItem(ui->treeWidget, treeItem, title, 16, getFunc, setFunc);
-  lineEdit->setValidator(new QRegExpValidator(NetAddrTools::ipRegEx()));
+  lineEdit->setValidator(new QRegularExpressionValidator(NetAddrTools::ipRegEx()));
   refreshDataList.push_back(lineEdit);
 }
 
