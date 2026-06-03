@@ -10,7 +10,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15
 
-TARGET = "iConnectivity iConfig"
+TARGET = "iConfigMac26"
+VERSION = 4.3.0
 TEMPLATE = app
 include(./qtsinglapplication/qtsingleapplication.pri)
 
@@ -171,7 +172,7 @@ win32: QMAKE_LFLAGS += /STACK:32000000
 
 DEFINES += BOOST_RESULT_OF_USE_DECLTYPE
 
-#mac: DEFINES        += __MACOSX_CORE__
+mac: DEFINES        += __MACOSX_CORE__
 win32: DEFINES      += __WINDOWS_MM__
 win32: DEFINES      += __RTMIDI_DEBUG__
 win32: LIBS         += -L"C:/Program Files (x86)/Microsoft SDKs/Windows/v7.1A/Lib/" -L"C:/Program Files (x86)/Microsoft Visual C++ Compiler Nov 2013 CTP/lib" -lWinMM
@@ -181,8 +182,8 @@ win32: LIBS         += -L"C:/Program Files (x86)/Microsoft SDKs/Windows/v7.1A/Li
 
 
 
-mac: QMAKE_CXXFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15
-mac: QMAKE_LFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15
+mac: QMAKE_CXXFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15 -w
+mac: QMAKE_LFLAGS = -std=c++11  -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15 -w
 
 mac: LIBS           += -framework CoreMIDI
 mac: LIBS           += -framework CoreFoundation
