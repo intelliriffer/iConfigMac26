@@ -213,11 +213,37 @@ Communicator::Communicator()
   }
 
 #else   // NOT __IOS__
+  qDebug() << "Communicator constructor starting (non-iOS)";
   timerThread = boost::shared_ptr<TimerThread>(new TimerThread());
   timerThread->start();
+
+#ifndef _WIN32
+  try {
+    m_probeIn = boost::shared_ptr<RtMidiIn>(new RtMidiIn("iConnectivity iConfig Input"));
+    qDebug() << "RtMidiIn created successfully";
+    qDebug() << "Input port count:" << m_probeIn->getPortCount();
+
+    for (unsigned int i = 0; i < m_probeIn->getPortCount(); ++i) {
+      QString portName = QString::fromStdString(m_probeIn->getPortName(i));
+      qDebug() << "  Input Port" << i << ":" << portName;
+    }
+
+    m_probeOut = boost::shared_ptr<RtMidiOut>(new RtMidiOut("iConnectivity iConfig Output"));
+    qDebug() << "RtMidiOut created successfully";
+    qDebug() << "Output port count:" << m_probeOut->getPortCount();
+
+    for (unsigned int i = 0; i < m_probeOut->getPortCount(); ++i) {
+      QString portName = QString::fromStdString(m_probeOut->getPortName(i));
+      qDebug() << "  Output Port" << i << ":" << portName;
+    }
+  } catch (RtMidiError &e) {
+    qWarning() << "RtMidi error in constructor:" << e.what();
+  }
+#endif  // _WIN32
 #endif  // __IOS__
 
   currentOutPort = -1;
+  qDebug() << "Communicator constructor completed";
 }
 
 Communicator::~Communicator(void) {

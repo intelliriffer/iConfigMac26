@@ -1,1 +1,38 @@
 .DS_Store
+
+# C++ object files and build artifacts
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dylib
+*.exe
+*.out
+*.app
+**/*.app/Contents/**
+**/*/*.o
+# Qt/MOC files
+*.moc
+*.ui
+qmake*
+Makefile*
+qmake*
+qmakefile*
+
+# Mac OS / Xcode
+.xcuserstate
+*.xccheckout
+*.generated-gcc
+Build/
+DerivedData/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Generated files
+generqated/
