@@ -4,7 +4,7 @@
 
 ### Why this MacOs Build?
 
-Original Iconfig is ver old (2017) and on Silicon Macs runs under Rosetta. Apple is Removing Support for Rosetta, so its no longer going to function, however since I Use my iConnectAudio4+ audio Interface exclusively with iConfig, I needed to solve this , instead of running old iconfing under some VM.
+Original Iconfig is very old (2017) and on Silicon Macs runs under Rosetta. Apple is Removing Support for Rosetta, so its no longer going to function, however since I Use my iConnectAudio4+ audio Interface exclusively with iConfig, I needed to solve this, instead of running old iconfing under some VM.
 
 ### The Changes
 
