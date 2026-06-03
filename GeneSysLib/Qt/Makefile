@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = GeneSysLib1.0.0
-DISTDIR = /Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Qt/.tmp/GeneSysLib1.0.0
+DISTDIR = /Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Qt/.tmp/GeneSysLib1.0.0
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -697,7 +697,7 @@ EXPORT_VALID_ARCHS = arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ARCHS), $(EXPORT_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Qt/GeneSysLib.pro
+EXPORT__PRO_FILE_ = /Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Qt/GeneSysLib.pro
 
 
 first: all
@@ -1527,7 +1527,7 @@ moc_TimerThread.cpp: ../Base/TimerThread.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
-	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Qt/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Qt -I/Users/atalwar/DEV/iCOnfig/iConfig/rtmidi-2.1.1 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/AudioV1 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/AudioV2 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/Mixer -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Base -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Device -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/MIDI -I/opt/homebrew/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtNetwork.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../Base/TimerThread.h -o moc_TimerThread.cpp
+	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Qt/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Qt -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/rtmidi-2.1.1 -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Audio -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Audio/AudioV1 -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Audio/AudioV2 -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Audio/Mixer -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Base -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/Device -I/Users/atalwar/DEV/iConfigMac26/iConfigMac26/GeneSysLib/MIDI -I/opt/homebrew/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtNetwork.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib ../Base/TimerThread.h -o moc_TimerThread.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
