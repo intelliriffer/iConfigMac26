@@ -1018,8 +1018,9 @@ void MainWindow::queryCompleted(Screen screen, CommandQList)
                                 std::cout << std::hex << (int)*i << ' ';
                             std::cout << "\n\n";
 
-                            for (Bytes::const_iterator i = postData.begin(); i != postData.end(); ++i)
+                            for (Bytes::const_iterator i = postData.begin(); i != postData.end(); ++i) {
                                 std::cout << std::hex << (int)*i << ' ';
+                            }
                             std::cout << '\n';
 
                             if (preData == postData) {

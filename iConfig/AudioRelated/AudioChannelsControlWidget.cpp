@@ -154,7 +154,7 @@ void AudioChannelsControlWidget::buildChannelWidgets()
 
 void AudioChannelsControlWidget::linkButtonClicked(int whichButton)
 {
-    qDebug() << "A link buton was clicked: " << whichButton;
+
     audioControlFeatureSource->stereoLink(whichButton, !audioControlFeatureSource->stereoLink(whichButton));
     this->notifyStereoLinkHappened();
 }

@@ -6331,13 +6331,13 @@ AudioChannelConfigWidget.o: AudioRelated/AudioChannelConfigWidget.cpp AudioRelat
 		MixerRelated/MixerOutputInterface.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QCheckBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
-		../GeneSysLib/Audio/AudioV2/AudioPatchbayParm.h \
-		../GeneSysLib/Base/blockNotFound.h \
-		../GeneSysLib/Audio/AudioV2/AudioDeviceParm.h \
-		../GeneSysLib/Audio/AudioV2/AudioDeviceTypes.h \
 		../GeneSysLib/Audio/AudioV2/AudioControlParm.h \
+		../GeneSysLib/Audio/AudioV2/AudioDeviceTypes.h \
 		../GeneSysLib/Audio/AudioV2/ControllerType.h \
 		../GeneSysLib/Audio/AudioV2/AudioControlTypes.h \
+		../GeneSysLib/Audio/AudioV2/AudioDeviceParm.h \
+		../GeneSysLib/Audio/AudioV2/AudioPatchbayParm.h \
+		../GeneSysLib/Base/blockNotFound.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AudioChannelConfigWidget.o AudioRelated/AudioChannelConfigWidget.cpp
 
