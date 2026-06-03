@@ -93,6 +93,10 @@
     </property>
     <addaction name="actionAbout"/>
     <addaction name="separator"/>
+    <addaction name="actionTheme_System"/>
+    <addaction name="actionTheme_Light"/>
+    <addaction name="actionTheme_Dark"/>
+    <addaction name="separator"/>
     <addaction name="actionIConnectivity_Website"/>
     <addaction name="separator"/>
     <addaction name="actionSoftware_Manual"/>
@@ -217,6 +221,21 @@
   <action name="actionUpgrade_Firmware_From_Local_Drive">
    <property name="text">
     <string>Load Firmware From Local Drive</string>
+   </property>
+  </action>
+  <action name="actionTheme_System">
+   <property name="text">
+    <string>Theme: System</string>
+   </property>
+  </action>
+  <action name="actionTheme_Light">
+   <property name="text">
+    <string>Theme: Light</string>
+   </property>
+  </action>
+  <action name="actionTheme_Dark">
+   <property name="text">
+    <string>Theme: Dark</string>
    </property>
   </action>
  </widget>

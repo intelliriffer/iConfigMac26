@@ -102,6 +102,9 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "QCloseEvent*",
         "event",
         "on_actionAbout_triggered",
+        "on_actionTheme_System_triggered",
+        "on_actionTheme_Light_triggered",
+        "on_actionTheme_Dark_triggered",
         "closeAllInTime",
         "on_actionIConnectivity_Website_triggered",
         "on_actionSoftware_Manual_triggered",
@@ -227,18 +230,24 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         }}),
         // Slot 'on_actionAbout_triggered'
         QtMocHelpers::SlotData<void()>(63, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'closeAllInTime'
+        // Slot 'on_actionTheme_System_triggered'
         QtMocHelpers::SlotData<void()>(64, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionIConnectivity_Website_triggered'
+        // Slot 'on_actionTheme_Light_triggered'
         QtMocHelpers::SlotData<void()>(65, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionSoftware_Manual_triggered'
+        // Slot 'on_actionTheme_Dark_triggered'
         QtMocHelpers::SlotData<void()>(66, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionRegister_triggered'
+        // Slot 'closeAllInTime'
         QtMocHelpers::SlotData<void()>(67, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionUpgrade_Firmware_triggered'
+        // Slot 'on_actionIConnectivity_Website_triggered'
         QtMocHelpers::SlotData<void()>(68, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'on_actionUpgrade_Firmware_From_Local_Drive_triggered'
+        // Slot 'on_actionSoftware_Manual_triggered'
         QtMocHelpers::SlotData<void()>(69, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_actionRegister_triggered'
+        QtMocHelpers::SlotData<void()>(70, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_actionUpgrade_Firmware_triggered'
+        QtMocHelpers::SlotData<void()>(71, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_actionUpgrade_Firmware_From_Local_Drive_triggered'
+        QtMocHelpers::SlotData<void()>(72, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -316,12 +325,15 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 51: _t->onTimeout(); break;
         case 52: _t->closeEvent((*reinterpret_cast<std::add_pointer_t<QCloseEvent*>>(_a[1]))); break;
         case 53: _t->on_actionAbout_triggered(); break;
-        case 54: _t->closeAllInTime(); break;
-        case 55: _t->on_actionIConnectivity_Website_triggered(); break;
-        case 56: _t->on_actionSoftware_Manual_triggered(); break;
-        case 57: _t->on_actionRegister_triggered(); break;
-        case 58: _t->on_actionUpgrade_Firmware_triggered(); break;
-        case 59: _t->on_actionUpgrade_Firmware_From_Local_Drive_triggered(); break;
+        case 54: _t->on_actionTheme_System_triggered(); break;
+        case 55: _t->on_actionTheme_Light_triggered(); break;
+        case 56: _t->on_actionTheme_Dark_triggered(); break;
+        case 57: _t->closeAllInTime(); break;
+        case 58: _t->on_actionIConnectivity_Website_triggered(); break;
+        case 59: _t->on_actionSoftware_Manual_triggered(); break;
+        case 60: _t->on_actionRegister_triggered(); break;
+        case 61: _t->on_actionUpgrade_Firmware_triggered(); break;
+        case 62: _t->on_actionUpgrade_Firmware_From_Local_Drive_triggered(); break;
         default: ;
         }
     }
@@ -356,14 +368,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 60)
+        if (_id < 63)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 60;
+        _id -= 63;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 60)
+        if (_id < 63)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 60;
+        _id -= 63;
     }
     return _id;
 }

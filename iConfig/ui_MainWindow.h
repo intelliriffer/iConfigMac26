@@ -44,6 +44,9 @@ public:
     QAction *actionOpenPresetsFolder;
     QAction *actionFirmwareConfig;
     QAction *actionUpgrade_Firmware_From_Local_Drive;
+    QAction *actionTheme_System;
+    QAction *actionTheme_Light;
+    QAction *actionTheme_Dark;
     QWidget *centralWidget;
     QGridLayout *gridLayout_;
     QMenuBar *menuBar;
@@ -100,6 +103,12 @@ public:
         actionFirmwareConfig->setObjectName("actionFirmwareConfig");
         actionUpgrade_Firmware_From_Local_Drive = new QAction(MainWindow);
         actionUpgrade_Firmware_From_Local_Drive->setObjectName("actionUpgrade_Firmware_From_Local_Drive");
+        actionTheme_System = new QAction(MainWindow);
+        actionTheme_System->setObjectName("actionTheme_System");
+        actionTheme_Light = new QAction(MainWindow);
+        actionTheme_Light->setObjectName("actionTheme_Light");
+        actionTheme_Dark = new QAction(MainWindow);
+        actionTheme_Dark->setObjectName("actionTheme_Dark");
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setAutoFillBackground(false);
@@ -153,6 +162,10 @@ public:
         menuFile->addAction(actionQuit);
         menuHelp->addAction(actionAbout);
         menuHelp->addSeparator();
+        menuHelp->addAction(actionTheme_System);
+        menuHelp->addAction(actionTheme_Light);
+        menuHelp->addAction(actionTheme_Dark);
+        menuHelp->addSeparator();
         menuHelp->addAction(actionIConnectivity_Website);
         menuHelp->addSeparator();
         menuHelp->addAction(actionSoftware_Manual);
@@ -193,6 +206,9 @@ public:
 #endif // QT_CONFIG(shortcut)
         actionFirmwareConfig->setText(QCoreApplication::translate("MainWindow", "Firmware Check Frequency", nullptr));
         actionUpgrade_Firmware_From_Local_Drive->setText(QCoreApplication::translate("MainWindow", "Load Firmware From Local Drive", nullptr));
+        actionTheme_System->setText(QCoreApplication::translate("MainWindow", "Theme: System", nullptr));
+        actionTheme_Light->setText(QCoreApplication::translate("MainWindow", "Theme: Light", nullptr));
+        actionTheme_Dark->setText(QCoreApplication::translate("MainWindow", "Theme: Dark", nullptr));
         menuDevice->setTitle(QCoreApplication::translate("MainWindow", "Device", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuHelp->setTitle(QCoreApplication::translate("MainWindow", "Help", nullptr));

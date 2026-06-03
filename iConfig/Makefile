@@ -36,8 +36,8 @@ DEL_DIR       = rmdir
 MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
-DISTNAME      = iConfigMac261.0.0
-DISTDIR = /Users/atalwar/DEV/iCOnfig/iConfig/iConfig/.tmp/iConfigMac261.0.0
+DISTNAME      = iConfigMac264.3.0
+DISTDIR = /Users/atalwar/DEV/iCOnfig/iConfig/iConfig/.tmp/iConfigMac264.3.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -std=c++11 -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15 -w -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk -mmacosx-version-min=10.15 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
 LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework CoreMIDI -framework CoreFoundation -framework CoreAudio -L/Users/atalwar/DEV/iCOnfig/iConfig/iConfig/../GeneSysLib/Qt -lGeneSysLib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtNetwork -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework OpenGL   
@@ -76,6 +76,7 @@ SOURCES       = qtsinglapplication/qtsingleapplication.cpp \
 		RefreshObject.cpp \
 		RotatedLabel.cpp \
 		TableListener.cpp \
+		ThemeController.mm \
 		TimerThread.cpp \
 		TreeUtils.cpp \
 		MyCheckBox.cpp \
@@ -178,6 +179,7 @@ OBJECTS       = qtsingleapplication.o \
 		RefreshObject.o \
 		RotatedLabel.o \
 		TableListener.o \
+		ThemeController.o \
 		TimerThread.o \
 		TreeUtils.o \
 		MyCheckBox.o \
@@ -721,6 +723,7 @@ DIST          = Images/block_pa12device.png \
 		RefreshObject.cpp \
 		RotatedLabel.cpp \
 		TableListener.cpp \
+		ThemeController.mm \
 		TimerThread.cpp \
 		TreeUtils.cpp \
 		MyCheckBox.cpp \
@@ -1552,7 +1555,7 @@ iConfigMac26.app/Contents/PkgInfo:
 iConfigMac26.app/Contents/Info.plist: 
 	@test -d iConfigMac26.app/Contents || mkdir -p iConfigMac26.app/Contents
 	@$(DEL_FILE) iConfigMac26.app/Contents/Info.plist
-	@set -o pipefail && plutil -convert xml1 -o - /opt/homebrew/share/qt/mkspecs/macx-clang/Info.plist.app | sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,\$${QMAKE_SHORT_VERSION},1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,\$${QMAKE_FULL_VERSION},1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.intelliriffer.iConfigMac26,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.intelliriffer.iConfigMac26,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.15,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,\$${IOS_LAUNCH_SCREEN},LaunchScreen,g" -e "s,@ICON@,Icon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},Icon.icns,g" -e "s,@EXECUTABLE@,iConfigMac26,g" -e "s,@LIBRARY@,iConfigMac26,g" -e "s,\$${EXECUTABLE_NAME},iConfigMac26,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" >iConfigMac26.app/Contents/Info.plist
+	@set -o pipefail && plutil -convert xml1 -o - /opt/homebrew/share/qt/mkspecs/macx-clang/Info.plist.app | sed -e "s,@SHORT_VERSION@,4.3,g" -e "s,\$${QMAKE_SHORT_VERSION},4.3,g" -e "s,@FULL_VERSION@,4.3.0,g" -e "s,\$${QMAKE_FULL_VERSION},4.3.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.intelliriffer.iConfigMac26,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.intelliriffer.iConfigMac26,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.15,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,\$${IOS_LAUNCH_SCREEN},LaunchScreen,g" -e "s,@ICON@,Icon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},Icon.icns,g" -e "s,@EXECUTABLE@,iConfigMac26,g" -e "s,@LIBRARY@,iConfigMac26,g" -e "s,\$${EXECUTABLE_NAME},iConfigMac26,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" >iConfigMac26.app/Contents/Info.plist
 iConfigMac26.app/Contents/Resources/Icon.icns: Icon.icns
 	@test -d iConfigMac26.app/Contents/Resources/ || mkdir -p iConfigMac26.app/Contents/Resources/
 	@$(DEL_FILE) iConfigMac26.app/Contents/Resources/Icon.icns
@@ -1572,7 +1575,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents qtsinglapplication/qtsingleapplication.h qtsinglapplication/qtlocalpeer.h ../rtmidi-2.1.1/RtMidi.h AudioRelated/AudioInfoForm.h AudioRelated/AudioPatchbayForm.h MIDIRelated/MIDIChannelRemapForm.h MIDIRelated/MIDIControllerFilterForm.h MIDIRelated/MIDIControllerRemapForm.h MIDIRelated/MIDIInfoForm.h MIDIRelated/MIDIPortFiltersForm.h MIDIRelated/MIDIPortRoutingForm.h MIDIRelated/MIDIPortSelectionForm.h FirmwareRelated/FirmwareUpgradeDialog.h BlockState.h CCList.h CommandQList.h DeviceInfo.h DeviceInfoForm.h DeviceRebooter.h DeviceSelectionDialog.h MainWindow.h MySleep.h PortIDVector.h RefreshObject.h RotatedLabel.h Screen.h TableListener.h TimerThread.h TreeUtils.h MyCheckBox.h MyLineEdit.h GetSetFunc.h MyComboBox.h IRefreshData.h MyLabel.h MyConverters.h MySpinBox.h CenteredContainer.h AudioRelated/IAudioPatchbaySource.h AudioRelated/PatchbayV2Form.h AudioRelated/AudioPatchbaySourceV2.h AudioRelated/AudioPatchbaySourceV1.h AudioRelated/IAudioControlSelectorSource.h AudioRelated/IAudioControlFeatureSource.h AudioRelated/AudioControlFeatureSource.h AudioRelated/AudioControlWidget.h AudioRelated/AudioFeatureControlWidget.h AudioRelated/AudioChannelsControlWidget.h MixerRelated/MixerPortWidget.h MixerRelated/MixerInputInterface.h MixerRelated/MixerOutputInterface.h MixerRelated/MixerInterface.h MixerRelated/MixerWidget.h MixerRelated/MixerChannelWidget.h QtSingleApplicationWrapper.h QClickyDial.h QClickySlider.h QClickyDbLabel.h IQClickyDbLabelAcceptor.h MixerRelated/HorizontalMeterWidget.h MixerRelated/MixerChannelConfigWidget.h AudioRelated/AudioChannelConfigWidget.h DeviceInformationDialog.h Presets/ICSaveDialog.h Presets/ICRestoreDialog.h FirmwareRelated/FirmwareCheckDialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents qtsinglapplication/qtsingleapplication.cpp qtsinglapplication/qtlocalpeer.cpp ../rtmidi-2.1.1/RtMidi.cpp AudioRelated/AudioInfoForm.cpp AudioRelated/AudioPatchbayForm.cpp MIDIRelated/MIDIChannelRemapForm.cpp MIDIRelated/MIDIControllerFilterForm.cpp MIDIRelated/MIDIControllerRemapForm.cpp MIDIRelated/MIDIInfoForm.cpp MIDIRelated/MIDIPortFiltersForm.cpp MIDIRelated/MIDIPortRoutingForm.cpp MIDIRelated/MIDIPortSelectionForm.cpp FirmwareRelated/FirmwareUpgradeDialog.cpp CCList.cpp DeviceInfo.cpp DeviceInfoForm.cpp DeviceRebooter.cpp DeviceSelectionDialog.cpp Main.cpp MainWindow.cpp MySleep.cpp RefreshObject.cpp RotatedLabel.cpp TableListener.cpp TimerThread.cpp TreeUtils.cpp MyCheckBox.cpp MyLineEdit.cpp MyComboBox.cpp MyLabel.cpp MyConverters.cpp MySpinBox.cpp CenteredContainer.cpp AudioRelated/IAudioPatchbaySource.cpp AudioRelated/PatchbayV2Form.cpp AudioRelated/AudioPatchbaySourceV2.cpp AudioRelated/AudioPatchbaySourceV1.cpp AudioRelated/AudioControlFeatureSource.cpp AudioRelated/AudioControlWidget.cpp AudioRelated/AudioFeatureControlWidget.cpp AudioRelated/AudioChannelsControlWidget.cpp MixerRelated/MixerWidget.cpp MixerRelated/MixerPortWidget.cpp MixerRelated/MixerInputInterface.cpp MixerRelated/MixerOutputInterface.cpp MixerRelated/MixerInterface.cpp MixerRelated/MixerChannelWidget.cpp QtSingleApplicationWrapper.cpp QClickyDial.cpp QClickySlider.cpp QClickyDbLabel.cpp MixerRelated/HorizontalMeterWidget.cpp MixerRelated/MixerChannelConfigWidget.cpp AudioRelated/AudioChannelConfigWidget.cpp DeviceInformationDialog.cpp Presets/ICSaveDialog.cpp Presets/ICRestoreDialog.cpp FirmwareRelated/FirmwareCheckDialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents qtsinglapplication/qtsingleapplication.cpp qtsinglapplication/qtlocalpeer.cpp ../rtmidi-2.1.1/RtMidi.cpp AudioRelated/AudioInfoForm.cpp AudioRelated/AudioPatchbayForm.cpp MIDIRelated/MIDIChannelRemapForm.cpp MIDIRelated/MIDIControllerFilterForm.cpp MIDIRelated/MIDIControllerRemapForm.cpp MIDIRelated/MIDIInfoForm.cpp MIDIRelated/MIDIPortFiltersForm.cpp MIDIRelated/MIDIPortRoutingForm.cpp MIDIRelated/MIDIPortSelectionForm.cpp FirmwareRelated/FirmwareUpgradeDialog.cpp CCList.cpp DeviceInfo.cpp DeviceInfoForm.cpp DeviceRebooter.cpp DeviceSelectionDialog.cpp Main.cpp MainWindow.cpp MySleep.cpp RefreshObject.cpp RotatedLabel.cpp TableListener.cpp ThemeController.mm TimerThread.cpp TreeUtils.cpp MyCheckBox.cpp MyLineEdit.cpp MyComboBox.cpp MyLabel.cpp MyConverters.cpp MySpinBox.cpp CenteredContainer.cpp AudioRelated/IAudioPatchbaySource.cpp AudioRelated/PatchbayV2Form.cpp AudioRelated/AudioPatchbaySourceV2.cpp AudioRelated/AudioPatchbaySourceV1.cpp AudioRelated/AudioControlFeatureSource.cpp AudioRelated/AudioControlWidget.cpp AudioRelated/AudioFeatureControlWidget.cpp AudioRelated/AudioChannelsControlWidget.cpp MixerRelated/MixerWidget.cpp MixerRelated/MixerPortWidget.cpp MixerRelated/MixerInputInterface.cpp MixerRelated/MixerOutputInterface.cpp MixerRelated/MixerInterface.cpp MixerRelated/MixerChannelWidget.cpp QtSingleApplicationWrapper.cpp QClickyDial.cpp QClickySlider.cpp QClickyDbLabel.cpp MixerRelated/HorizontalMeterWidget.cpp MixerRelated/MixerChannelConfigWidget.cpp AudioRelated/AudioChannelConfigWidget.cpp DeviceInformationDialog.cpp Presets/ICSaveDialog.cpp Presets/ICRestoreDialog.cpp FirmwareRelated/FirmwareCheckDialog.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents AudioRelated/AudioInfoForm.ui AudioRelated/AudioPatchbayForm.ui MIDIRelated/MIDIChannelRemapForm.ui MIDIRelated/MIDIControllerFilterForm.ui MIDIRelated/MIDIControllerRemapForm.ui MIDIRelated/MIDIInfoForm.ui MIDIRelated/MIDIPortFiltersForm.ui MIDIRelated/MIDIPortRoutingForm.ui MIDIRelated/MIDIPortSelectionForm.ui FirmwareRelated/FirmwareUpgradeDialog.ui DeviceInfoForm.ui DeviceSelectionDialog.ui MainWindow.ui AudioRelated/PatchbayV2Form.ui DeviceInformationDialog.ui Presets/ICSaveDialog.ui Presets/ICRestoreDialog.ui FirmwareRelated/FirmwareCheckDialog.ui $(DISTDIR)/
 
 
@@ -2688,6 +2691,10 @@ moc_MainWindow.cpp: MainWindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSignalMapper \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
 	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/atalwar/DEV/iCOnfig/iConfig/iConfig/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/atalwar/DEV/iCOnfig/iConfig/iConfig -I/Users/atalwar/DEV/iCOnfig/iConfig/iConfig/qtsinglapplication -I/Users/atalwar/DEV/iCOnfig/rtmidi-2.1.1 -I/Users/atalwar/DEV/iCOnfig/iConfig/rtmidi-2.1.1 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/Mixer -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/AudioV1 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Audio/AudioV2 -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Base -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Device -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/MIDI -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/build-GeneSysLib-Desktop-Release -I/Users/atalwar/DEV/iCOnfig/iConfig/GeneSysLib/Qt -I/opt/homebrew/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtNetwork.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib MainWindow.h -o moc_MainWindow.cpp
@@ -4883,6 +4890,10 @@ Main.o: Main.cpp MainWindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSignalMapper \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		QtSingleApplicationWrapper.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/QUuid
@@ -4948,6 +4959,10 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSignalMapper \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		ui_MainWindow.h \
 		AudioRelated/AudioInfoForm.h \
 		../GeneSysLib/Audio/AudioV1/AudioInfo.h \
@@ -4976,7 +4991,6 @@ MainWindow.o: MainWindow.cpp MainWindow.h \
 		../GeneSysLib/Audio/Mixer/MixerParm.h \
 		../GeneSysLib/Audio/Mixer/MixerPortParm.h \
 		GetSetFunc.h \
-		/opt/homebrew/lib/QtCore.framework/Headers/QString \
 		/opt/homebrew/lib/QtCore.framework/Headers/QStringList \
 		refreshobject.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
@@ -5088,6 +5102,15 @@ TableListener.o: TableListener.cpp TableListener.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TableListener.o TableListener.cpp
 
+ThemeController.o: ThemeController.mm ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtCore.framework/Headers/QSettings \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ThemeController.o ThemeController.mm
+
 TimerThread.o: TimerThread.cpp timerthread.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QThread \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer
@@ -5187,6 +5210,7 @@ PatchbayV2Form.o: AudioRelated/PatchbayV2Form.cpp AudioRelated/PatchbayV2Form.h 
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ui_patchbayV2Form.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPaintEvent \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainter \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainterPath \
@@ -6429,6 +6453,10 @@ ICSaveDialog.o: Presets/ICSaveDialog.cpp Presets/ICSaveDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSignalMapper \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		../GeneSysLib/Device/SaveRestore.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
@@ -6504,6 +6532,10 @@ ICRestoreDialog.o: Presets/ICRestoreDialog.cpp Presets/ICRestoreDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QSpacerItem \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSignalMapper \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QString \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtGui.framework/Headers/QDesktopServices \
 		/opt/homebrew/lib/QtCore.framework/Headers/QStandardPaths \

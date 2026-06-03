@@ -7,6 +7,7 @@
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "ThemeController.h"
 
 // Audio Related
 #include "./AudioRelated/AudioInfoForm.h"
@@ -119,6 +120,10 @@ MainWindow::MainWindow(QWidget* parent)
   devInfoDialog = 0;
 
   readSettings();
+
+  // Apply theme settings
+  ThemeController::applyTheme();
+
   if (comm->timerThread) {
     connect(comm->timerThread.get(), SIGNAL(timedOut()), this,
             SLOT(onTimeout()));
@@ -1389,6 +1394,32 @@ void MainWindow::createActions() {
     connect(audioMixerAction, SIGNAL(triggered()), this,
             SLOT(audioMixerControl_triggered()));
 
+    // Theme actions - separate action group for theme selection
+    QActionGroup *themeActionGroup = new QActionGroup(this);
+    themeSystemAction = new QAction("System", this);
+    themeSystemAction->setCheckable(true);
+    themeSystemAction->setStatusTip(tr("Follow the system color scheme"));
+    themeSystemAction->setChecked(ThemeController::getCurrentThemeMode() == ThemeMode::System);
+    themeActionGroup->addAction(themeSystemAction);
+    connect(themeSystemAction, SIGNAL(triggered()), this,
+            SLOT(on_actionTheme_System_triggered()));
+
+    themeLightAction = new QAction("Light", this);
+    themeLightAction->setCheckable(true);
+    themeLightAction->setStatusTip(tr("Force light theme regardless of system settings"));
+    themeLightAction->setChecked(ThemeController::getCurrentThemeMode() == ThemeMode::Light);
+    themeActionGroup->addAction(themeLightAction);
+    connect(themeLightAction, SIGNAL(triggered()), this,
+            SLOT(on_actionTheme_Light_triggered()));
+
+    themeDarkAction = new QAction("Dark", this);
+    themeDarkAction->setCheckable(true);
+    themeDarkAction->setStatusTip(tr("Force dark theme regardless of system settings"));
+    themeDarkAction->setChecked(ThemeController::getCurrentThemeMode() == ThemeMode::Dark);
+    themeActionGroup->addAction(themeDarkAction);
+    connect(themeDarkAction, SIGNAL(triggered()), this,
+            SLOT(on_actionTheme_Dark_triggered()));
+
     // File menus
     connect(ui->actionQuit, SIGNAL(triggered()), this, SLOT(close()));
   }
@@ -1697,4 +1728,23 @@ void MainWindow::on_actionUpgrade_Firmware_From_Local_Drive_triggered()
      QPointer<FirmwareUpgradeDialog> firmwareDialog(new FirmwareUpgradeDialog(this->comm, this->currentDevice, filename, this));
      firmwareDialog->ShowFWUpdateDialogForLocalFile();
   }
+}
+
+// Theme action handlers
+void MainWindow::on_actionTheme_System_triggered()
+{
+  ThemeController::setThemeMode(ThemeMode::System);
+  themeSystemAction->setChecked(true);
+}
+
+void MainWindow::on_actionTheme_Light_triggered()
+{
+  ThemeController::setThemeMode(ThemeMode::Light);
+  themeLightAction->setChecked(true);
+}
+
+void MainWindow::on_actionTheme_Dark_triggered()
+{
+  ThemeController::setThemeMode(ThemeMode::Dark);
+  themeDarkAction->setChecked(true);
 }

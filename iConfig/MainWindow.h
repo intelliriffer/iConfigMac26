@@ -24,6 +24,7 @@
 #include <QSpacerItem>
 #include <QSignalMapper>
 #include <QSharedPointer>
+#include "ThemeController.h"
 
 namespace Ui { class MainWindow; }
 
@@ -98,6 +99,11 @@ private slots:
 
   void on_actionAbout_triggered();
 
+  // Theme actions
+  void on_actionTheme_System_triggered();
+  void on_actionTheme_Light_triggered();
+  void on_actionTheme_Dark_triggered();
+
   void closeAllInTime();
 
   void on_actionIConnectivity_Website_triggered();
@@ -143,6 +149,11 @@ private slots:
 
   QAction *audioInfoAction;
   QAction *audioPatchbayAction;
+
+  // Theme actions
+  QAction *themeSystemAction;
+  QAction *themeLightAction;
+  QAction *themeDarkAction;
   QAction *audioMixerAction;
   QAction *audioControlAction;
   QAction *ccFilterAction;

@@ -44,6 +44,7 @@ SOURCES +=                                                        \
     ./RefreshObject.cpp                                           \
     ./RotatedLabel.cpp                                            \
     ./TableListener.cpp                                           \
+    ./ThemeController.mm                                          \
     ./TimerThread.cpp                                             \
     ./TreeUtils.cpp                                               \
     ./MyCheckBox.cpp                                              \
