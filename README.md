@@ -16,7 +16,7 @@ Original Iconfig is very old (2017) and on Silicon Macs runs under Rosetta. Appl
 
 ### Tooling
 
- Claude Code with Qwen 3.5 32B model wsa used to do most of the heavy lifting followed by manual bug fixes and tweaks on Mac Silicon M5 / Tahoe 26.5
+ Claude Code with Qwen 3.5 32B model wsa used to do most of the heavy lifting followed by manual bug fixes and tweaks on Mac Silicon M4 / Tahoe 26.5
 
 ### Build Requirements
 
