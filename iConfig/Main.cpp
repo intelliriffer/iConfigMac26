@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     // QCoreApplication::setApplicationVersion("4.2.5"); //zx, 2017-04-26
     // QCoreApplication::setApplicationVersion("4.2.6"); //zx, 2017-06-22
     QCoreApplication::setApplicationVersion("4.2.7"); // fix, 2017-11-15
-    QCoreApplication::setApplicationVersion("4.3.0"); // 03-06-2026
+    QCoreApplication::setApplicationVersion("4.3.1"); // 03-06-2026
     MainWindow w;
     w.show();
 

@@ -36,8 +36,8 @@ DEL_DIR       = rmdir
 MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
-DISTNAME      = iConfigMac264.3.0
-DISTDIR = /Users/atalwar/DEV/iConfigMac26/iConfigMac26/iConfig/.tmp/iConfigMac264.3.0
+DISTNAME      = iConfigMac264.3.1
+DISTDIR = /Users/atalwar/DEV/iConfigMac26/iConfigMac26/iConfig/.tmp/iConfigMac264.3.1
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -std=c++11 -Wno-unused-parameter -Wno-deprecated-register -O2 -mmacosx-version-min=10.15 -w -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk -mmacosx-version-min=10.15 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/opt/homebrew/lib
 LIBS          = $(SUBLIBS) -F/opt/homebrew/lib -framework CoreMIDI -framework CoreFoundation -framework CoreAudio -L/Users/atalwar/DEV/iConfigMac26/iConfigMac26/iConfig/../GeneSysLib/Qt -lGeneSysLib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtNetwork -framework QtCore -framework IOKit -framework DiskArbitration -framework UniformTypeIdentifiers -framework OpenGL   
@@ -1555,7 +1555,7 @@ iConfigMac26.app/Contents/PkgInfo:
 iConfigMac26.app/Contents/Info.plist: 
 	@test -d iConfigMac26.app/Contents || mkdir -p iConfigMac26.app/Contents
 	@$(DEL_FILE) iConfigMac26.app/Contents/Info.plist
-	@set -o pipefail && plutil -convert xml1 -o - /opt/homebrew/share/qt/mkspecs/macx-clang/Info.plist.app | sed -e "s,@SHORT_VERSION@,4.3,g" -e "s,\$${QMAKE_SHORT_VERSION},4.3,g" -e "s,@FULL_VERSION@,4.3.0,g" -e "s,\$${QMAKE_FULL_VERSION},4.3.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.intelliriffer.iConfigMac26,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.intelliriffer.iConfigMac26,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.15,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,\$${IOS_LAUNCH_SCREEN},LaunchScreen,g" -e "s,@ICON@,Icon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},Icon.icns,g" -e "s,@EXECUTABLE@,iConfigMac26,g" -e "s,@LIBRARY@,iConfigMac26,g" -e "s,\$${EXECUTABLE_NAME},iConfigMac26,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" >iConfigMac26.app/Contents/Info.plist
+	@set -o pipefail && plutil -convert xml1 -o - /opt/homebrew/share/qt/mkspecs/macx-clang/Info.plist.app | sed -e "s,@SHORT_VERSION@,4.3,g" -e "s,\$${QMAKE_SHORT_VERSION},4.3,g" -e "s,@FULL_VERSION@,4.3.1,g" -e "s,\$${QMAKE_FULL_VERSION},4.3.1,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.intelliriffer.iConfigMac26,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.intelliriffer.iConfigMac26,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.15,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,\$${IOS_LAUNCH_SCREEN},LaunchScreen,g" -e "s,@ICON@,Icon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},Icon.icns,g" -e "s,@EXECUTABLE@,iConfigMac26,g" -e "s,@LIBRARY@,iConfigMac26,g" -e "s,\$${EXECUTABLE_NAME},iConfigMac26,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" >iConfigMac26.app/Contents/Info.plist
 iConfigMac26.app/Contents/Resources/Icon.icns: Icon.icns
 	@test -d iConfigMac26.app/Contents/Resources/ || mkdir -p iConfigMac26.app/Contents/Resources/
 	@$(DEL_FILE) iConfigMac26.app/Contents/Resources/Icon.icns
@@ -5210,6 +5210,11 @@ PatchbayV2Form.o: AudioRelated/PatchbayV2Form.cpp AudioRelated/PatchbayV2Form.h 
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
 		/opt/homebrew/lib/QtCore.framework/Headers/QTimer \
 		/opt/homebrew/lib/QtCore.framework/Headers/QSharedPointer \
+		ThemeController.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QSettings \
+		/opt/homebrew/lib/QtGui.framework/Headers/QGuiApplication \
+		/opt/homebrew/lib/QtGui.framework/Headers/QStyleHints \
+		ui_patchbayV2Form.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPaintEvent \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPainter \

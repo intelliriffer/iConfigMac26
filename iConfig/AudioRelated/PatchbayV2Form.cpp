@@ -6,12 +6,15 @@
 */
 
 #include "PatchbayV2Form.h"
+#include "ThemeController.h"
 #include "ui_patchbayV2Form.h"
 
 #include <QDebug>
+#include <QGuiApplication>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPainterPath>
+#include <QStyleHints>
 
 #include <algorithm>
 #include <cmath>
@@ -28,6 +31,9 @@ static const float arrow_width = 5.0f;
 static const float arrow_height = arrow_width * 1.6666f;
 static const float arrowXOffset = 5.0f;
 static const float arrowYOffset = 2.0f;
+QColor defaultColor = Qt::black;
+QColor altColor = Qt::lightGray;
+QColor qColor = defaultColor;
 
 using namespace std;
 
@@ -81,6 +87,20 @@ void PatchbayV2Form::draw(const QRect& srcRect)
     const auto dx_2 = dx * 0.5f;
     const auto dy_2 = dy * 0.5f;
 
+    ThemeMode mode = ThemeController::getCurrentThemeMode();
+    if (mode == ThemeMode::Light) {
+        qColor = defaultColor;
+    } else if (mode == ThemeMode::Dark) {
+        qColor = altColor;
+    } else { // system mode
+        Qt::ColorScheme scheme = QGuiApplication::styleHints()->colorScheme();
+        if (scheme == Qt::ColorScheme::Dark) {
+            qColor = altColor;
+
+            mode = ThemeMode::Dark;
+        }
+    }
+
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(Qt::black);
@@ -92,11 +112,17 @@ void PatchbayV2Form::draw(const QRect& srcRect)
     int count1 = 1;
     for (int section = 1; section <= m_source->numSections(); ++section) {
         const QSizeF sectionSize = QSizeF(dx * m_source->numOutputsPerSection(section), rect().height());
+
         if ((count1 & 0x01) == 0x00) {
             painter.fillRect(QRectF(QPointF(x, srcRect.top()), sectionSize),
                 // QBrush(QColor(150, 200, 255, 128)));
-                QBrush(QColor(180, 220, 255, 128)));
+                // QBrush(QColor(180, 220, 255, 128)));
+                QBrush(QColor(180, 220, 255, 180))); // hilighted columns
             // QBrush(QColor(180, 220, 255, 128), Qt::Dense3Pattern));
+        } else if (mode == ThemeMode::Dark) {
+            painter.fillRect(QRectF(QPointF(x, srcRect.top()), sectionSize),
+
+                QBrush(QColor(180, 220, 255, 128)));
         }
 
         const auto bounds = QRectF(QPointF(x, hHeaderRect.top()),
@@ -105,6 +131,7 @@ void PatchbayV2Form::draw(const QRect& srcRect)
         font.setPointSize(14);
         font.setBold(true);
         painter.setFont(font);
+        painter.setPen(defaultColor);
 
         painter.drawText(bounds, Qt::AlignCenter | Qt::TextWordWrap,
             m_source->nameForSection(section));
@@ -117,14 +144,18 @@ void PatchbayV2Form::draw(const QRect& srcRect)
             QPointF mid_p = QPointF(x + dx_2, verticalArrowOffset());
 
             drawDownTriangle(painter, mid_p, QBrush(Qt::black));
-
-            painter.setPen(Qt::DotLine);
+            QPen pen;
+            pen.setColor(Qt::black);
+            pen.setStyle(Qt::DotLine);
+            painter.setPen(pen);
+            // painter.setPen(Qt::DotLine);
             painter.drawLine(QPointF(x + dx_2, verticalArrowOffset()),
                 QPointF(x + dx_2, rect().bottom()));
 
             const auto bounds = QRectF(QPointF(x, verticalChannelNumOffset()),
                 QSizeF(dx, textHeight));
             if (!m_source->isCollapsedInput(section)) {
+                painter.setPen(defaultColor);
                 painter.drawText(bounds, Qt::AlignCenter | Qt::TextWordWrap,
                     QString::number(output));
             }
@@ -151,6 +182,8 @@ void PatchbayV2Form::draw(const QRect& srcRect)
 
         const auto bounds = QRectF(QPointF(vHeaderRect.left(), y),
             QSizeF(vHeaderRect.width(), sectionSize.height()));
+        // right side text
+        painter.setPen(qColor);
         painter.drawText(bounds, Qt::AlignCenter | Qt::TextWordWrap,
             m_source->nameForSection(section));
 
@@ -162,9 +195,13 @@ void PatchbayV2Form::draw(const QRect& srcRect)
         for (int output = 1; output <= nOutputChannelCount; ++output) {
             QPointF mid_p;
             mid_p = QPointF(horizontalArrowOffset(), y + dy_2);
-            drawRightTriangle(painter, mid_p, QBrush(Qt::black));
-
-            painter.setPen(Qt::DotLine);
+            // drawRightTriangle(painter, mid_p, QBrush(Qt::black));
+            drawRightTriangle(painter, mid_p, QBrush(qColor));
+            QPen pen;
+            pen.setColor(Qt::black);
+            pen.setStyle(Qt::DotLine);
+            painter.setPen(pen);
+            // painter.setPen(Qt::DotLine);
             painter.drawLine(QPointF(grid.left(), y + dy_2),
                 QPointF(horizontalArrowOffset(), y + dy_2));
 
@@ -173,6 +210,9 @@ void PatchbayV2Form::draw(const QRect& srcRect)
 
             // TODO: Hack to make L/R show up for headphones on ICA4
             if (!m_source->isCollapsedOutput(section)) {
+                // right side labels
+                painter.setPen(qColor);
+
                 if (m_source->isMixerToo() && (section == 5 && output > (nOutputChannelCount - 2))) {
                     QString letters;
                     if (output == nOutputChannelCount - 1)
@@ -211,12 +251,13 @@ void PatchbayV2Form::draw(const QRect& srcRect)
 
             QPen pen;
             if (m_source->isCollapsedInput(outPort) || m_source->isCollapsedOutput(inPort))
-                pen = QPen(QBrush(Qt::blue), 1.2f);
+                pen = QPen(QBrush(Qt::blue), 2.6f);
             else
-                pen = QPen(QBrush(Qt::black), 1.2f);
+                pen = QPen(QBrush(Qt::black), 3.0f);
             painter.setPen(pen);
             painter.drawLine(a, b);
             painter.drawLine(b, c);
+
             if (m_source->isCollapsedInput(outPort) || m_source->isCollapsedOutput(inPort))
                 painter.setBrush(Qt::blue);
             else
@@ -307,6 +348,7 @@ void PatchbayV2Form::draw(const QRect& srcRect)
 
             //
             QPointF mid_p;
+
             mid_p = QPointF(grid.left() + fx, verticalArrowOffset());
             drawDownTriangle(painter, mid_p, QBrush(color));
 
@@ -377,6 +419,7 @@ void PatchbayV2Form::drawLegend(QPainter& painter)
 
     painter.translate((legendRect.topLeft() + legendRect.center()) * 0.5f);
     painter.rotate(angle);
+    painter.setPen(qColor);
     painter.drawText(drawRect,
         Qt::AlignHCenter | Qt::AlignBottom | Qt::TextWordWrap,
         QString("Sources"));
@@ -387,6 +430,7 @@ void PatchbayV2Form::drawLegend(QPainter& painter)
     painter.rotate(angle);
     painter.drawText(drawRect, Qt::AlignHCenter | Qt::TextWordWrap,
         QString("Destinations"));
+    painter.setPen(defaultColor);
 
     painter.restore();
 }
@@ -395,6 +439,7 @@ void PatchbayV2Form::drawTriangle(QPainter& painter, const QPointF& a,
     const QPointF& b, const QPointF& c,
     const QBrush& brush)
 {
+    // painter.setPen(Qt::red);
     QPainterPath path = QPainterPath(a);
     path.lineTo(b);
     path.lineTo(c);
@@ -419,6 +464,7 @@ void PatchbayV2Form::drawRightTriangle(QPainter& painter, const QPointF& point,
     mid_p = point + QPointF(arrowSize(), 0);
     top_l = mid_p - QPointF(arrow_height, -arrow_width);
     top_r = mid_p - QPointF(arrow_height, arrow_width);
+
     drawTriangle(painter, mid_p, top_l, top_r, brush);
 }
 

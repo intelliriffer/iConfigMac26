@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.15
 
 TARGET = "iConfigMac26"
-VERSION = 4.3.0
+VERSION = 4.3.1
 TEMPLATE = app
 include(./qtsinglapplication/qtsingleapplication.pri)
 
